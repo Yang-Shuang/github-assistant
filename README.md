@@ -1,6 +1,6 @@
 # GitHub Reader Public Viewer
 
-纯静态GitHub Pages展示模块，用于公开浏览抓取到的仓库信息。
+纯静态GitHub Pages展示模块，用于公开浏览抓取到的仓库信息。AI 相关的仓库
 
 ## 使用方法
 
