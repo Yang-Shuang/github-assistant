@@ -34,7 +34,7 @@ async function loadRepos(page = 1, sortBy = 'fetched_at', sortOrder = 'desc') {
     
     try {
         // 加载repos.json数据
-        const response = await fetch('/data/repos.json');
+        const response = await fetch('./data/repos.json');
         let repos = await response.json();
         
         // 排序处理
@@ -195,7 +195,7 @@ function updateDetailDesc() {
 }
 
 async function loadDetail(repoId) {
-    const response = await fetch('/data/repos.json');
+    const response = await fetch('./data/repos.json');
     const repos = await response.json();
     
     currentRepo = repos.find(r => r.id == repoId);
