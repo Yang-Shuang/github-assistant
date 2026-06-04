@@ -312,7 +312,7 @@ async function loadReadme(repo, lang) {
     try {
         contentEl.innerHTML = '<div class="loading">加载中...</div>';
         
-        const response = await fetch(`/${readmePath}`);
+        const response = await fetch(`./${readmePath}`);
         if (!response.ok) throw new Error('README not found');
         
         const text = await response.text();
