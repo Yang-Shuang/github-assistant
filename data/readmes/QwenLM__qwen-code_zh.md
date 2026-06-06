@@ -7,7 +7,7 @@
 
 <a href="https://trendshift.io/repositories/15287" target="_blank"><img src="https://trendshift.io/api/badge/repositories/15287" alt="QwenLM%2Fqwen-code | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-**An open-source AI agent that lives in your terminal.**
+**一个驻留在终端中的开源 AI 智能体（Agent）。**
 
 <a href="https://qwenlm.github.io/qwen-code-docs/zh/users/overview">中文</a> |
 <a href="https://qwenlm.github.io/qwen-code-docs/de/users/overview">Deutsch</a> |
@@ -18,30 +18,30 @@
 
 </div>
 
-## 🎉 News
+## 🎉 更新动态
 
-- **2026-04-15**: Qwen OAuth free tier has been discontinued. To continue using Qwen Code, switch to [Alibaba Cloud Coding Plan](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index), [OpenRouter](https://openrouter.ai), [Fireworks AI](https://app.fireworks.ai), or bring your own API key. Run `qwen auth` to configure.
+- **2026-04-15**：Qwen OAuth 免费套餐已停止服务。要继续使用 Qwen Code，请切换至 [Alibaba Cloud Coding Plan](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index)、[OpenRouter](https://openrouter.ai)、[Fireworks AI](https://app.fireworks.ai)，或使用你自己的 API Key。运行 `qwen auth` 进行配置。
 
-- **2026-04-13**: Qwen OAuth free tier policy update: daily quota adjusted to 100 requests/day (from 1,000).
+- **2026-04-13**：Qwen OAuth 免费套餐策略更新：每日请求配额调整为每天 100 次（原为 1,000 次）。
 
-- **2026-04-02**: Qwen3.6-Plus is now live! Get an API key from [Alibaba Cloud ModelStudio](https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=doc#/doc/?type=model&url=2840914_2&modelId=qwen3.6-plus) to access it through the OpenAI-compatible API.
+- **2026-04-02**：**Qwen3.6-Plus 现已上线！** 从 [Alibaba Cloud ModelStudio](https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=doc#/doc/?type=model&url=2840914_2&modelId=qwen3.6-plus) 获取 API Key，通过 OpenAI 兼容的 API 进行访问。
 
-- **2026-02-16**: Qwen3.5-Plus is now live!
+- **2026-02-16**：**Qwen3.5-Plus 现已上线！**
 
-## Why Qwen Code?
+## 为什么选择 Qwen Code？
 
-Qwen Code is an open-source AI agent for the terminal, optimized for Qwen series models. It helps you understand large codebases, automate tedious work, and ship faster.
+Qwen Code 是一款专为终端设计的开源 AI 智能体（Agent），针对 Qwen 系列模型进行了深度优化。它能帮助你理解大型代码库、自动化繁琐工作并加速交付。
 
-- **Multi-protocol, flexible providers**: use OpenAI / Anthropic / Gemini-compatible APIs, [Alibaba Cloud Coding Plan](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index), [OpenRouter](https://openrouter.ai), [Fireworks AI](https://app.fireworks.ai), or bring your own API key.
-- **Open-source, co-evolving**: both the framework and the Qwen3-Coder model are open-source—and they ship and evolve together.
-- **Agentic workflow, feature-rich**: rich built-in tools (Skills, SubAgents) for a full agentic workflow and a Claude Code-like experience.
-- **Terminal-first, IDE-friendly**: built for developers who live in the command line, with optional integration for VS Code, Zed, and JetBrains IDEs.
+- **多协议与灵活的服务商支持**：可使用兼容 OpenAI / Anthropic / Gemini 的 API、[Alibaba Cloud Coding Plan](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index)、[OpenRouter](https://openrouter.ai)、[Fireworks AI](https://app.fireworks.ai)，或自带 API Key。
+- **开源与协同演进**：框架与 Qwen3-Coder 模型均为开源，二者同步发布并共同演进。
+- **智能体工作流与丰富功能**：内置丰富的工具（Skills、SubAgents），提供完整的智能体工作流和类 Claude Code 的使用体验。
+- **终端优先，IDE 友好**：专为命令行开发者打造，可选集成 VS Code、Zed 和 JetBrains IDE。
 
 ![](https://gw.alicdn.com/imgextra/i1/O1CN01D2DviS1wwtEtMwIzJ_!!6000000006373-2-tps-1600-900.png)
 
-## Installation
+## 安装
 
-### Quick Install (Recommended)
+### 快速安装（推荐）
 
 #### Linux / macOS
 
@@ -55,13 +55,13 @@ curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/in
 irm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex
 ```
 
-> **Note**: It's recommended to restart your terminal after installation to ensure environment variables take effect.
+> **注意**：安装完成后建议重启终端，以确保环境变量生效。
 
-### Manual Installation
+### 手动安装
 
-#### Prerequisites
+#### 前置条件
 
-Make sure you have Node.js 22 or later installed. Download it from [nodejs.org](https://nodejs.org/en/download).
+确保已安装 Node.js 22 或更高版本。请从 [nodejs.org](https://nodejs.org/en/download) 下载。
 
 #### NPM
 
@@ -69,13 +69,13 @@ Make sure you have Node.js 22 or later installed. Download it from [nodejs.org](
 npm install -g @qwen-code/qwen-code@latest
 ```
 
-#### Homebrew (macOS, Linux)
+#### Homebrew（macOS、Linux）
 
 ```bash
 brew install qwen-code
 ```
 
-## Quick Start
+## 快速开始
 
 ```bash
 # Start Qwen Code (interactive)
@@ -86,9 +86,9 @@ qwen
 /auth
 ```
 
-On first use, you'll be prompted to sign in. You can run `/auth` anytime to switch authentication methods.
+首次使用时，系统将提示你登录。你可以随时运行 `/auth` 切换认证方式。
 
-Example prompts:
+示例提示词：
 
 ```text
 What does this project do?
@@ -106,9 +106,9 @@ Your browser does not support the video tag.
 
 </details>
 
-## 🦞 Use Qwen Code for Coding Tasks in Claw
+## 🦞 在 Claw 中使用 Qwen Code 进行编码任务
 
-Copy the prompt below and paste it into your agent:
+复制以下提示词并粘贴到你的智能体中：
 
 ```
 Use Qwen Code as a coding agent. First, fetch and read this skill reference:
@@ -116,30 +116,30 @@ https://raw.githubusercontent.com/QwenLM/qwen-code/refs/heads/main/.qwen/skills/
 Then follow the instructions inside to install, authenticate, and use Qwen Code via acpx for all coding tasks.
 ```
 
-## Authentication
+## 认证配置
 
-Qwen Code supports the following authentication methods:
+Qwen Code 支持以下认证方式：
 
-- **API Key (recommended)**: use an API key from Alibaba Cloud Model Studio ([Beijing](https://bailian.console.aliyun.com/) / [intl](https://modelstudio.console.alibabacloud.com/)) or any supported provider (OpenAI, Anthropic, Google GenAI, and other compatible endpoints).
-- **Coding Plan**: subscribe to the Alibaba Cloud Coding Plan ([Beijing](https://bailian.console.aliyun.com/cn-beijing?tab=coding-plan#/efm/coding-plan-index) / [intl](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index)) for a fixed monthly fee with higher quotas.
+- **API Key（推荐）**：使用阿里云百炼（[北京](https://bailian.console.aliyun.com/) / [国际版](https://modelstudio.console.alibabacloud.com/）或其他支持的服务商（OpenAI、Anthropic、Google GenAI 及其他兼容端点）提供的 API Key。
+- **编程套餐**：订阅阿里云编程套餐（[北京](https://bailian.console.aliyun.com/cn-beijing?tab=coding-plan#/efm/coding-plan-index) / [国际版](https://modelstudio.console.alibabacloud.com/?tab=coding-plan#/efm/coding-plan-index）），按月付费，享有更高配额。
 
-> ⚠️ **Qwen OAuth was discontinued on April 15, 2026.** If you were previously using Qwen OAuth, please switch to one of the methods above. Run `qwen` and then `/auth` to reconfigure.
+> ⚠️ **Qwen OAuth 已于 2026 年 4 月 15 日停止服务。** 如果你之前使用的是 Qwen OAuth，请切换至上述任一方式。运行 `qwen` 然后执行 `/auth` 重新配置。
 
-#### API Key (recommended)
+#### API Key（推荐）
 
-Use an API key to connect to Alibaba Cloud Model Studio or any supported provider. Supports multiple protocols:
+使用 API Key 连接阿里云百炼或任何支持的服务商。支持多种协议：
 
-- **OpenAI-compatible**: Alibaba Cloud ModelStudio, ModelScope, OpenAI, OpenRouter, and other OpenAI-compatible providers
-- **Anthropic**: Claude models
-- **Google GenAI**: Gemini models
+- **兼容 OpenAI**：阿里云百炼、ModelScope、OpenAI、OpenRouter 及其他兼容 OpenAI 的服务商
+- **Anthropic**：Claude 系列模型
+- **Google GenAI**：Gemini 系列模型
 
-The **recommended** way to configure models and providers is by editing `~/.qwen/settings.json` (create it if it doesn't exist). This file lets you define all available models, API keys, and default settings in one place.
+**推荐**的模型与服务商配置方式是编辑 `~/.qwen/settings.json` 文件（若不存在则新建）。该文件允许你在一个位置定义所有可用模型、API Key 和默认设置。
 
-##### Quick Setup in 3 Steps
+##### 三步快速配置
 
-**Step 1:** Create or edit `~/.qwen/settings.json`
+**步骤 1：** 创建或编辑 `~/.qwen/settings.json`
 
-Here is a complete example:
+完整示例如下：
 
 ```json
 {
@@ -168,7 +168,7 @@ Here is a complete example:
 }
 ```
 
-**Step 2:** Understand each field
+**步骤 2：** 了解各字段含义
 
 | Field                        | What it does                                                                                                                          |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -180,15 +180,15 @@ Here is a complete example:
 | `security.auth.selectedType` | The protocol to use on startup (`openai`, `anthropic`, `gemini`, `vertex-ai`).                                                        |
 | `model.name`                 | The default model to use when Qwen Code starts.                                                                                       |
 
-**Step 3:** Start Qwen Code — your configuration takes effect automatically:
+**步骤 3：** 启动 Qwen Code —— 配置将自动生效：
 
 ```bash
 qwen
 ```
 
-Use the `/model` command at any time to switch between all configured models.
+可随时使用 `/model` 命令在所有已配置的模型之间切换。
 
-##### More Examples
+##### 更多示例
 
 <details>
 <summary>Coding Plan (Alibaba Cloud ModelStudio) — fixed monthly fee, higher quotas</summary>
@@ -343,9 +343,9 @@ Use the `/model` command at any time to switch between all configured models.
 
 </details>
 
-> **Tip:** You can also set API keys via `export` in your shell or `.env` files, which take higher priority than `settings.json` → `env`. See the [authentication guide](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/) for full details.
+> **提示**：你也可以通过 Shell 中的 `export` 命令或 `.env` 文件设置 API Key，其优先级高于 `settings.json` → `env`。完整说明请参阅[认证指南](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/)。
 
-> **Security note:** Never commit API keys to version control. The `~/.qwen/settings.json` file is in your home directory and should stay private.
+> **安全提示**：切勿将 API Key 提交至版本控制系统。`~/.qwen/settings.json` 文件位于你的主目录下，应保持私密。
 
 #### Local Model Setup (Ollama / vLLM)
 
@@ -424,15 +424,15 @@ and adjust it to the context length configured on your local server.
 
 </details>
 
-## Usage
+## 使用方式
 
-As an open-source terminal agent, you can use Qwen Code in five primary ways:
+作为开源终端智能体，Qwen Code 主要有五种使用方式：
 
-1. Interactive mode (terminal UI)
-2. Headless mode (scripts, CI)
-3. IDE integration (VS Code, Zed)
-4. SDKs (TypeScript, Python, Java)
-5. Daemon mode — `qwen serve` exposes ACP over HTTP+SSE so multiple clients share one agent (experimental)
+1. Interactive mode（终端界面）
+2. Headless mode（脚本、CI）
+3. IDE integration（VS Code、Zed）
+4. SDKs（TypeScript、Python、Java）
+5. Daemon mode —— `qwen serve` 通过 HTTP+SSE 暴露 ACP，使多个客户端共享同一个智能体（实验性功能）
 
 #### Interactive mode
 
@@ -441,7 +441,7 @@ cd your-project/
 qwen
 ```
 
-Run `qwen` in your project folder to launch the interactive terminal UI. Use `@` to reference local files (for example `@src/main.ts`).
+在项目文件夹中运行 `qwen` 即可启动交互式终端界面。使用 `@` 引用本地文件（例如 `@src/main.ts`）。
 
 #### Headless mode
 
@@ -450,7 +450,7 @@ cd your-project/
 qwen -p "your question"
 ```
 
-Use `-p` to run Qwen Code without the interactive UI—ideal for scripts, automation, and CI/CD. Learn more: [Headless mode](https://qwenlm.github.io/qwen-code-docs/en/users/features/headless).
+使用 `-p` 参数在无交互式界面的情况下运行 Qwen Code——非常适合脚本、自动化和 CI/CD。了解更多：[Headless mode](https://qwenlm.github.io/qwen-code-docs/en/users/features/headless)。
 
 #### IDE integration
 
@@ -468,7 +468,7 @@ qwen serve
 # → qwen serve listening on http://127.0.0.1:4170 (mode=http-bridge)
 ```
 
-Run Qwen Code as a local HTTP daemon so IDE plugins, web UIs, CI scripts and custom CLIs all share **one** agent session over HTTP+SSE — instead of each spawning their own subprocess. Loopback bind has no auth by default (set `QWEN_SERVER_TOKEN` to enable bearer auth even on loopback); remote binds (`--hostname 0.0.0.0`) **require** a token — boot refuses without one. See:
+将 Qwen Code 作为本地 HTTP 守护进程运行，使 IDE 插件、Web UI、CI 脚本和自定义 CLI 通过 HTTP+SSE 共享**一个**智能体会话——而不是各自启动独立的子进程。默认情况下回环绑定（Loopback）无需认证（设置 `QWEN_SERVER_TOKEN` 可在回环绑定下启用 Bearer 认证）；远程绑定（`--hostname 0.0.0.0`）**必须**提供 Token，否则启动将拒绝。详见：
 
 - [Daemon mode user guide](https://qwenlm.github.io/qwen-code-docs/en/users/qwen-serve)
 - [HTTP protocol reference](https://qwenlm.github.io/qwen-code-docs/en/developers/qwen-serve-protocol)
@@ -507,7 +507,7 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
-## Commands & Shortcuts
+## 命令与快捷键
 
 ### Session Commands
 
@@ -526,11 +526,11 @@ asyncio.run(main())
 
 > Learn more about [Commands](https://qwenlm.github.io/qwen-code-docs/en/users/features/commands/)
 >
-> **Tip**: In YOLO mode (`--yolo`), vision switching happens automatically without prompts when images are detected. Learn more about [Approval Mode](https://qwenlm.github.io/qwen-code-docs/en/users/features/approval-mode/)
+> **提示**：在 YOLO 模式（`--yolo`）下，检测到图片时会自动切换视觉能力而无需额外提示。了解更多关于[审批模式](https://qwenlm.github.io/qwen-code-docs/en/users/features/approval-mode/)的信息
 
-## Configuration
+## 配置
 
-Qwen Code can be configured via `settings.json`, environment variables, and CLI flags.
+Qwen Code 可通过 `settings.json`、环境变量和 CLI 参数进行配置。
 
 | File                    | Scope         | Description                                                                             |
 | ----------------------- | ------------- | --------------------------------------------------------------------------------------- |
@@ -548,7 +548,7 @@ The most commonly used top-level fields in `settings.json`:
 
 > See the [Authentication](#api-key-flexible) section above for complete `settings.json` examples, and the [settings reference](https://qwenlm.github.io/qwen-code-docs/en/users/configuration/settings/) for all available options.
 
-## Benchmark Results
+## 基准测试结果
 
 ### Terminal-Bench Performance
 
@@ -557,14 +557,14 @@ The most commonly used top-level fields in `settings.json`:
 | Qwen Code | Qwen3-Coder-480A35 | 37.5%    |
 | Qwen Code | Qwen3-Coder-30BA3B | 31.3%    |
 
-## Ecosystem
+## 生态工具
 
-Looking for a graphical interface?
+寻找图形化界面？
 
 - [**AionUi**](https://github.com/iOfficeAI/AionUi) A modern GUI for command-line AI tools including Qwen Code
 - [**Gemini CLI Desktop**](https://github.com/Piebald-AI/gemini-cli-desktop) A cross-platform desktop/web/mobile UI for Qwen Code
 
-## Troubleshooting
+## 常见问题排查
 
 If you encounter issues, check the [troubleshooting guide](https://qwenlm.github.io/qwen-code-docs/en/users/support/troubleshooting/).
 
@@ -574,11 +574,11 @@ If you encounter issues, check the [troubleshooting guide](https://qwenlm.github
 
 To report a bug from within the CLI, run `/bug` and include a short title and repro steps.
 
-## Connect with Us
+## 联系我们
 
 - Discord: https://discord.gg/RN7tqZCeDK
 - Dingtalk: https://qr.dingtalk.com/action/joingroup?code=v1,k1,+FX6Gf/ZDlTahTIRi8AEQhIaBlqykA0j+eBKKdhLeAE=&_dt_no_comment=1&origin=1
 
-## Acknowledgments
+## 致谢
 
 This project is based on [Google Gemini CLI](https://github.com/google-gemini/gemini-cli). We acknowledge and appreciate the excellent work of the Gemini CLI team. Our main contribution focuses on parser-level adaptations to better support Qwen-Coder models.
