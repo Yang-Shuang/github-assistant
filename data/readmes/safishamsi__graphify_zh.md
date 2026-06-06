@@ -23,24 +23,24 @@
   </a>
 </p>
 
-Type `/graphify` in your AI coding assistant and it maps your entire project — code, docs, PDFs, images, videos — into a knowledge graph you can query instead of grepping through files.
+在你的 AI 编程助手中输入 `/graphify`，它会将你的整个项目（代码、文档、PDF、图片、视频）映射为一个知识图谱。你可以通过查询来检索信息，而不是在文件中盲目搜索。
 
-Works in Claude Code, Codex, OpenCode, Kilo Code, Cursor, Gemini CLI, GitHub Copilot CLI, VS Code Copilot Chat, Aider, Amp, OpenClaw, Factory Droid, Trae, Hermes, Kimi Code, Kiro, Pi, Devin CLI, and Google Antigravity.
+兼容 Claude Code、Codex、OpenCode、Kilo Code、Cursor、Gemini CLI、GitHub Copilot CLI、VS Code Copilot Chat、Aider、Amp、OpenClaw、Factory Droid、Trae、Hermes、Kimi Code、Kiro、Pi、Devin CLI 以及 Google Antigravity。
 
 ```
 /graphify .
 ```
 
-That's it. You get three files:
+完成。你将获得三个文件：
 
 ```
 graphify-out/
-├── graph.html       open in any browser — click nodes, filter, search
-├── GRAPH_REPORT.md  the highlights: key concepts, surprising connections, suggested questions
-└── graph.json       the full graph — query it anytime without re-reading your files
+├── graph.html       在任何浏览器中打开 — 点击节点、过滤、搜索
+├── GRAPH_REPORT.md  核心摘要：关键概念、意外关联、建议问题
+└── graph.json       完整图谱数据 — 随时查询，无需重新读取文件
 ```
 
-For a readable architecture page with Mermaid call-flow diagrams, run:
+如需生成带有 Mermaid 调用流程图的易读架构页面，请运行：
 
 ```bash
 graphify export callflow-html
@@ -48,25 +48,25 @@ graphify export callflow-html
 
 ---
 
-## Prerequisites
+## 前置要求
 
 | Requirement | Minimum | Check | Install |
 |---|---|---|---|
 | Python | 3.10+ | `python --version` | [python.org](https://www.python.org/downloads/) |
-| uv *(recommended)* | any | `uv --version` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
-| pipx *(alternative)* | any | `pipx --version` | `pip install pipx` |
+| uv *(推荐)* | any | `uv --version` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+| pipx *(备选)* | any | `pipx --version` | `pip install pipx` |
 
-**macOS quick install (Homebrew):**
+**macOS 快速安装（Homebrew）：**
 ```bash
 brew install python@3.12 uv
 ```
 
-**Windows quick install:**
+**Windows 快速安装：**
 ```powershell
 winget install astral-sh.uv
 ```
 
-**Ubuntu/Debian:**
+**Ubuntu/Debian：**
 ```bash
 sudo apt install python3.12 python3-pip pipx
 # or install uv:
@@ -75,53 +75,45 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ---
 
-## Install
+## 安装
 
-> **Official package:** The PyPI package is `graphifyy` (double-y). Other `graphify*` packages on PyPI are not affiliated. The CLI command is still `graphify`.
+> **官方包说明：** PyPI 上的正式包名为 `graphifyy`（双 y）。PyPI 上其他 `graphify*` 开头的包均与此无关。CLI 命令仍为 `graphify`。
 
-**Step 1 — install the package:**
+**步骤 1 — 安装包：**
 
 ```bash
-# Recommended (uv puts graphify on PATH automatically):
+# 推荐（uv 会自动将 graphify 加入 PATH）：
 uv tool install graphifyy
 
-# Alternatives:
+# 备选方案：
 pipx install graphifyy
-pip install graphifyy  # may need PATH setup — see note below
+pip install graphifyy  # 可能需要手动配置 PATH — 见下方说明
 ```
 
-**Step 2 — register the skill with your AI assistant:**
+**步骤 2 — 向你的 AI 助手注册技能（Skill）：**
 
 ```bash
 graphify install
 ```
 
-That's it. Open your AI assistant and type `/graphify .`
+完成。打开你的 AI 助手并输入 `/graphify .`
 
-To install the assistant skill into the current repository instead of your user
-profile, add `--project`:
+若要将助手技能安装到当前仓库而非用户配置文件中，请添加 `--project` 参数：
 
 ```bash
 graphify install --project
 graphify install --project --platform codex
 ```
 
-Project-scoped installs write under the current directory, for example
-`.claude/skills/graphify/SKILL.md` or `.agents/skills/graphify/SKILL.md` (plus a
-`references/` sidecar the skill loads on demand), and
-print a `git add` hint for files that can be committed.
-Per-platform commands that support project-scoped installs accept the same flag,
-for example `graphify claude install --project` or `graphify codex install --project`.
+项目级安装会将文件写入当前目录下，例如 `.claude/skills/graphify/SKILL.md` 或 `.agents/skills/graphify/SKILL.md`（附带一个按需加载的 `references/` 侧车文件），并输出提示哪些文件可以提交。支持项目级安装的跨平台命令同样接受此参数，例如 `graphify claude install --project` 或 `graphify codex install --project`。
 
-> **PowerShell note:** Use `graphify .` not `/graphify .` — the leading slash is a path separator in PowerShell.
+> **PowerShell 注意事项：** 请使用 `graphify .` 而非 `/graphify .` — 在 PowerShell 中前导斜杠会被识别为路径分隔符。
 
-> **`graphify: command not found`?** Use `uv tool install graphifyy` or `pipx install graphifyy` — both put the CLI on PATH automatically. With plain `pip`, add `~/.local/bin` (Linux) or `~/Library/Python/3.x/bin` (Mac) to your PATH, or run `python -m graphify`.
+> **提示找不到命令？** 请使用 `uv tool install graphifyy` 或 `pipx install graphifyy` — 两者均会自动将 CLI 加入 PATH。若使用原生 `pip`，请将 `~/.local/bin`（Linux）或 `~/Library/Python/3.x/bin`（Mac）添加到你的 PATH，或直接运行 `python -m graphify`。
 
-> **Avoid `pip install` on Mac/Windows** if possible. The skill resolves Python at runtime from `graphify-out/.graphify_python`; if that points to a different environment than where `pip` installed the package, you'll get `ModuleNotFoundError: No module named 'graphify'`. `uv tool install` and `pipx install` isolate the package in their own env and avoid this entirely.
+> **尽量避免在 Mac/Windows 上使用 `pip install`**。技能会在运行时从 `graphify-out/.graphify_python` 解析 Python。如果该路径指向的环境与 `pip` 安装包的环境不同，你将遇到 `ModuleNotFoundError: No module named 'graphify'`。使用 `uv tool install` 和 `pipx install` 会将包隔离在独立环境中，从而完全避免此问题。
 
-> **Git hooks and uv tool / pipx:** `graphify hook install` embeds the current interpreter path directly into the hook scripts at install time, so the post-commit hook fires correctly even in GUI git clients and CI runners where `~/.local/bin` is not on PATH. If you reinstall or upgrade graphify, re-run `graphify hook install` to refresh the embedded path.
-
-### Pick your platform
+### 选择你的平台
 
 | Platform | Install command |
 |----------|----------------|
@@ -147,38 +139,37 @@ for example `graphify claude install --project` or `graphify codex install --pro
 | Devin CLI | `graphify devin install` |
 | Google Antigravity | `graphify antigravity install` |
 
-> Codex users: also add `multi_agent = true` under `[features]` in `~/.codex/config.toml`.
-> Codex uses `$graphify` instead of `/graphify`.
+> Codex 用户：还需在 `~/.codex/config.toml` 的 `[features]` 下添加 `multi_agent = true`。Codex 使用 `$graphify` 而非 `/graphify`。
 
-### Optional extras
+### 可选扩展组件
 
-Install only what you need:
+按需安装所需功能：
 
 | Extra | What it adds | Install |
 |---|---|---|
-| `pdf` | PDF extraction | `uv tool install "graphifyy[pdf]"` |
-| `office` | `.docx` and `.xlsx` support | `uv tool install "graphifyy[office]"` |
-| `google` | Google Sheets rendering | `uv tool install "graphifyy[google]"` |
-| `video` | Video/audio transcription (faster-whisper + yt-dlp) | `uv tool install "graphifyy[video]"` |
+| `pdf` | PDF 提取 | `uv tool install "graphifyy[pdf]"` |
+| `office` | `.docx` and `.xlsx` 支持 | `uv tool install "graphifyy[office]"` |
+| `google` | Google Sheets 渲染 | `uv tool install "graphifyy[google]"` |
+| `video` | 视频/音频转录 (faster-whisper + yt-dlp) | `uv tool install "graphifyy[video]"` |
 | `mcp` | MCP stdio server | `uv tool install "graphifyy[mcp]"` |
-| `neo4j` | Neo4j push support | `uv tool install "graphifyy[neo4j]"` |
-| `svg` | SVG graph export | `uv tool install "graphifyy[svg]"` |
-| `leiden` | Leiden community detection (Python < 3.13 only) | `uv tool install "graphifyy[leiden]"` |
-| `ollama` | Ollama local inference | `uv tool install "graphifyy[ollama]"` |
-| `openai` | OpenAI / OpenAI-compatible APIs | `uv tool install "graphifyy[openai]"` |
+| `neo4j` | Neo4j 推送支持 | `uv tool install "graphifyy[neo4j]"` |
+| `svg` | SVG 图谱导出 | `uv tool install "graphifyy[svg]"` |
+| `leiden` | Leiden 社区检测 (仅 Python < 3.13) | `uv tool install "graphifyy[leiden]"` |
+| `ollama` | Ollama 本地推理 | `uv tool install "graphifyy[ollama]"` |
+| `openai` | OpenAI / OpenAI 兼容 API | `uv tool install "graphifyy[openai]"` |
 | `gemini` | Google Gemini API | `uv tool install "graphifyy[gemini]"` |
 | `anthropic` | Anthropic Claude API (`--backend claude`, uses `ANTHROPIC_API_KEY`) | `uv tool install "graphifyy[anthropic]"` |
 | `bedrock` | AWS Bedrock (uses IAM, no API key) | `uv tool install "graphifyy[bedrock]"` |
-| `sql` | SQL schema extraction | `uv tool install "graphifyy[sql]"` |
-| `dm` | BYOND DreamMaker `.dm`/`.dme` AST extraction (may need a C compiler + `python3-dev` if no wheel matches your platform) | `uv tool install "graphifyy[dm]"` |
-| `chinese` | Chinese query segmentation (jieba) | `uv tool install "graphifyy[chinese]"` |
-| `all` | Everything above | `uv tool install "graphifyy[all]"` |
+| `sql` | SQL 模式提取 | `uv tool install "graphifyy[sql]"` |
+| `dm` | BYOND DreamMaker `.dm`/`.dme` AST 提取 (若 wheel 不匹配平台，可能需 C 编译器 + `python3-dev`) | `uv tool install "graphifyy[dm]"` |
+| `chinese` | 中文查询分词 (jieba) | `uv tool install "graphifyy[chinese]"` |
+| `all` | 包含上述所有功能 | `uv tool install "graphifyy[all]"` |
 
 ---
 
-## Make your assistant always use the graph
+## 让助手始终使用知识图谱
 
-Run this once in your project after building a graph:
+在项目中构建好图谱后，运行以下命令之一：
 
 | Platform | Command |
 |----------|---------|
@@ -203,46 +194,43 @@ Run this once in your project after building a graph:
 | Devin CLI | `graphify devin install` |
 | Google Antigravity | `graphify antigravity install` |
 
-This writes a small config file that tells your assistant to consult the knowledge graph for codebase questions — preferring scoped queries like `graphify query "<question>"` over reading the full report or grepping raw files. On platforms that support payload-bearing hooks (Claude Code, Gemini CLI), a hook fires automatically before search-style tool calls (and, on Claude Code, before reading source files one by one via the Read/Glob tools) and nudges your assistant toward the graph path. On the others (Codex, OpenCode, Cursor, etc.), the persistent instruction files (`AGENTS.md`, `.cursor/rules/`, etc.) provide the same query-first guidance. `GRAPH_REPORT.md` is still available for broad architecture review.
+这将写入一个小型配置文件，指示你的助手在回答代码库相关问题时查阅知识图谱——优先使用作用域查询（如 `graphify query "<问题>"`），而不是阅读完整报告或搜索原始文件。对于支持有效载荷挂钩的平台（Claude Code、Gemini CLI），会在搜索类工具调用前自动触发挂钩（在 Claude Code 上，还会在使用 Read/Glob 工具逐个读取源文件之前），引导助手优先使用图谱路径。在其他平台（Codex、OpenCode、Cursor 等）上，持久化指令文件（`AGENTS.md`、`.cursor/rules/` 等）提供相同的“查询优先”指引。`GRAPH_REPORT.md` 仍可用于广泛的架构审查。
 
-To remove graphify from all platforms at once: `graphify uninstall` (add `--purge` to also delete `graphify-out/`). Or use the per-platform command (e.g. `graphify claude uninstall`).
-
----
-
-**Kilo Code** installs the Graphify skill to `~/.config/kilo/skills/graphify/SKILL.md` and a native `/graphify` command to `~/.config/kilo/command/graphify.md`. `graphify kilo install` also writes `AGENTS.md` plus a native **`tool.execute.before` plugin** (`.kilo/plugins/graphify.js` + `.kilo/kilo.json` or `.kilo/kilo.jsonc` registration) so Kilo gets the same always-on graph reminder behavior through native `.kilo` config.
-
-**Cursor** writes `.cursor/rules/graphify.mdc` with `alwaysApply: true` — Cursor includes it in every conversation automatically, no hook needed.
-
-## What's in the report
-
-- **God nodes** — the most-connected concepts in your project. Everything flows through these.
-- **Surprising connections** — links between things that live in different files or modules. Ranked by how unexpected they are.
-- **The "why"** — inline comments (`# NOTE:`, `# WHY:`, `# HACK:`), docstrings, and design rationale from docs are extracted as separate nodes linked to the code they explain.
-- **Suggested questions** — 4–5 questions the graph is uniquely positioned to answer.
-- **Confidence tags** — every inferred relationship is marked `EXTRACTED`, `INFERRED`, or `AMBIGUOUS`. You always know what was found vs guessed.
+若要一次性从所有平台移除 Graphify：运行 `graphify uninstall`（添加 `--purge` 参数还会删除 `graphify-out/`）。或使用各平台的独立命令，例如 `graphify claude uninstall`。
 
 ---
 
-## What files it handles
+**Kilo Code** 会将 Graphify 技能安装至 `~/.config/kilo/skills/graphify/SKILL.md`，并将原生 `/graphify` 命令安装至 `~/.config/kilo/command/graphify.md`。`graphify kilo install` 还会写入 `AGENTS.md` 以及原生的 **`tool.execute.before` 插件**（`.kilo/plugins/graphify.js` + `.kilo/kilo.json` 或 `.kilo/kilo.jsonc` 注册），使 Kilo 通过原生 `.kilo` 配置获得始终在线的图谱提醒行为。
+
+**Cursor** 会写入 `.cursor/rules/graphify.mdc`，其中包含 `alwaysApply: true` — Cursor 会自动将其加入每次对话，无需额外挂钩。
+
+## 报告内容说明
+
+- **God nodes（核心节点）** — 项目中连接最密集的实体。所有信息流均汇聚于此。
+- **Surprising connections（意外关联）** — 跨越不同文件或模块的实体链接。按“出乎意料”程度排序。
+- **The "why"（设计意图）** — 行内注释（`# NOTE:`、`# WHY:`、`# HACK:`）、文档字符串以及文档中的设计理由会被提取为独立节点，并指向其解释的代码。
+- **Suggested questions（建议问题）** — 图谱独有的 4–5 个高价值查询问题。
+- **Confidence tags（置信度标签）** — 每条推断关系均标记为 `EXTRACTED`、`INFERRED` 或 `AMBIGUOUS`。你始终清楚哪些是明确提取的，哪些是模型推测的。
+
+---
+
+## 支持的文件类型
 
 | Type | Extensions |
 |------|-----------|
-| Code (33 languages) | `.py .ts .js .jsx .tsx .mjs .go .rs .java .c .cpp .h .hpp .rb .cs .kt .scala .php .swift .lua .luau .zig .ps1 .ex .exs .m .mm .jl .vue .svelte .astro .groovy .gradle .dart .v .sv .svh .sql .f .f90 .f95 .f03 .f08 .pas .pp .dpr .dpk .lpr .inc .dfm .lfm .lpk .sh .bash .json .dm .dme .dmi .dmm .dmf .sln .csproj .fsproj .vbproj .razor .cshtml` (`.dm`/`.dme` AST extraction requires `uv tool install graphifyy[dm]`) |
-| MCP configs | `.mcp.json` `mcp.json` `mcp_servers.json` `claude_desktop_config.json` — extracts server nodes, package refs, env var requirements |
+| Code (33 languages) | `.py .ts .js .jsx .tsx .mjs .go .rs .java .c .cpp .h .hpp .rb .cs .kt .scala .php .swift .lua .luau .zig .ps1 .ex .exs .m .mm .jl .vue .svelte .astro .groovy .gradle .dart .v .sv .svh .sql .f .f90 .f95 .f03 .f08 .pas .pp .dpr .dpk .lpr .inc .dfm .lfm .lpk .sh .bash .json .dm .dme .dmi .dmm .dmf .sln .csproj .fsproj .vbproj .razor .cshtml` (`.dm`/`.dme` AST 提取需 `uv tool install graphifyy[dm]`) |
+| MCP configs | `.mcp.json` `mcp.json` `mcp_servers.json` `claude_desktop_config.json` — 提取服务器节点、包引用、环境变量要求 |
 | Docs | `.md .mdx .qmd .html .txt .rst .yaml .yml` |
 | Office | `.docx .xlsx` (requires `uv tool install graphifyy[office]`) |
 | Google Workspace | `.gdoc .gsheet .gslides` (opt-in; requires `gws` auth and `--google-workspace`; Sheets need `uv tool install graphifyy[google]`) |
 | PDFs | `.pdf` |
 | Images | `.png .jpg .webp .gif` |
-| Video / Audio | `.mp4 .mov .mp3 .wav` and more (requires `uv tool install graphifyy[video]`) |
+| Video / Audio | `.mp4 .mov .mp3 .wav` 及更多 (requires `uv tool install graphifyy[video]`) |
 | YouTube / URLs | any video URL (requires `uv tool install graphifyy[video]`) |
 
-Code is extracted locally with no API calls (AST via tree-sitter). Everything else goes through your AI assistant's model API.
+代码通过 tree-sitter 在本地提取，无需 API 调用。其余内容均通过你的 AI 助手的模型 API 处理。
 
-Google Drive for desktop `.gdoc`, `.gsheet`, and `.gslides` files are shortcut
-pointers, not document content. To include native Google Docs, Sheets, and Slides
-in a headless extraction, install and authenticate the
-[`gws` CLI](https://github.com/googleworkspace/cli), then run:
+桌面版 Google Drive 的 `.gdoc`、`.gsheet` 和 `.gslides` 文件仅为快捷方式指针，并非文档内容。若要在无头模式下包含原生 Google Docs、Sheets 和 Slides，请安装并认证 [`gws` CLI](https://github.com/googleworkspace/cli)，然后运行：
 
 ```bash
 uv tool install "graphifyy[google]"  # needed for Google Sheets table rendering
@@ -250,12 +238,11 @@ gws auth login -s drive
 graphify extract ./docs --google-workspace
 ```
 
-You can also set `GRAPHIFY_GOOGLE_WORKSPACE=1`. Graphify exports shortcuts into
-`graphify-out/converted/` as Markdown sidecars, then extracts those files.
+你也可以设置 `GRAPHIFY_GOOGLE_WORKSPACE=1`。Graphify 会将快捷方式导出为 Markdown 侧车文件至 `graphify-out/converted/`，随后提取这些文件。
 
 ---
 
-## Common commands
+## 常用命令
 
 ```bash
 /graphify .                        # build graph for current folder
@@ -283,13 +270,13 @@ graphify prs --triage              # AI ranks your review queue (uses whatever b
 graphify prs --conflicts           # PRs sharing graph communities — merge-order risk
 ```
 
-See the [full command reference](#full-command-reference) below.
+详见下方 [完整命令参考](#full-command-reference)。
 
 ---
 
-## Ignoring files
+## 忽略文件规则
 
-Create a `.graphifyignore` in your project root — same syntax as `.gitignore`, including `!` negation:
+在项目根目录创建 `.graphifyignore` — 语法与 `.gitignore` 相同，支持 `!` 取反：
 
 ```
 # .graphifyignore
@@ -305,27 +292,26 @@ dist/
 
 ---
 
-## Team setup
+## 团队协作配置
 
-`graphify-out/` is meant to be committed to git so everyone on the team starts with a map.
+建议将 `graphify-out/` 提交至 git，以便团队成员共享同一份知识图谱。
 
-**Recommended `.gitignore` additions:**
+**推荐的 `.gitignore` 添加项：**
 ```
+graphify-out/manifest.json    # mtime-based, breaks after git clone
 graphify-out/cost.json        # local only
 # graphify-out/cache/         # optional: commit for speed, skip to keep repo small
 ```
 
-> `manifest.json` is now portable — keys are stored as relative paths and re-anchored on load, so committing it is safe and avoids a full rebuild on first checkout.
-
-**Workflow:**
-1. One person runs `/graphify .` and commits `graphify-out/`.
-2. Everyone pulls — their assistant reads the graph immediately.
-3. Run `graphify hook install` to auto-rebuild after each commit (AST only, no API cost). This also sets up a git merge driver so `graph.json` is never left with conflict markers — two devs committing in parallel get their graphs union-merged automatically.
-4. When docs or papers change, run `/graphify --update` to refresh those nodes.
+**工作流：**
+1. 由一人运行 `/graphify .` 并提交 `graphify-out/`。
+2. 其他人拉取代码后，其助手即可立即读取图谱。
+3. 运行 `graphify hook install` 可在每次 git commit 后自动重建（仅处理 AST，无 API 成本）。同时会配置 git merge driver，确保 `graph.json` 永远不会残留冲突标记 — 两位开发者并行提交时，其图谱会自动进行并集合并。
+4. 当文档或论文更新时，运行 `/graphify --update` 刷新相关节点。
 
 ---
 
-## Using the graph directly
+## 直接使用知识图谱
 
 ```bash
 # query the graph from the terminal
@@ -339,18 +325,18 @@ python -m graphify.serve graphify-out/graph.json
 kimi mcp add --transport stdio graphify -- python -m graphify.serve graphify-out/graph.json
 ```
 
-The MCP server gives your assistant structured access: `query_graph`, `get_node`, `get_neighbors`, `shortest_path`, `list_prs`, `get_pr_impact`, `triage_prs`.
+MCP Server 为你的助手提供结构化访问权限：`query_graph`、`get_node`、`get_neighbors`、`shortest_path`、`list_prs`、`get_pr_impact`、`triage_prs`。
 
-> **WSL / Linux note:** Ubuntu ships `python3`, not `python`. Use a venv to avoid conflicts:
+> **WSL / Linux 注意事项：** Ubuntu 默认提供 `python3` 而非 `python`。建议使用 venv 避免冲突：
 > ```bash
 > python3 -m venv .venv && .venv/bin/pip install "graphifyy[mcp]"
 > ```
 
 ---
 
-## Environment variables
+## 环境变量
 
-These are only needed for **headless / CI extraction** (`graphify extract`). When running via the `/graphify` skill inside your IDE, the model API is provided by your IDE session — no extra keys needed.
+这些仅用于 **无头/CI 模式提取**（`graphify extract`）。通过 IDE 内的 `/graphify` 技能运行时，模型 API 由你的 IDE 会话提供——无需额外配置密钥。
 
 | Variable | Used for | When required |
 |---|---|---|
@@ -371,70 +357,66 @@ These are only needed for **headless / CI extraction** (`graphify extract`). Whe
 | `GRAPHIFY_GOOGLE_WORKSPACE` | Auto-enable Google Workspace export | optional — set to `1` |
 | `GRAPHIFY_TRIAGE_BACKEND` | Backend for `graphify prs --triage` | optional — auto-detected from available keys |
 | `GRAPHIFY_TRIAGE_MODEL` | Model override for triage | optional — e.g. `claude-opus-4-7` |
-| `GRAPHIFY_QUERY_LOG` | Override query log path (default: `~/.cache/graphify-queries.log`) | optional — set to empty or `/dev/null` to silence |
-| `GRAPHIFY_QUERY_LOG_DISABLE` | Set to `1` to disable query logging entirely | optional |
-| `GRAPHIFY_QUERY_LOG_RESPONSES` | Set to `1` to also log full subgraph responses (off by default) | optional |
 
 ---
 
-## Privacy
+## 隐私说明
 
-- **Code files** — processed locally via tree-sitter. Nothing leaves your machine.
-- **Video / audio** — transcribed locally with faster-whisper. Nothing leaves your machine.
-- **Docs, PDFs, images** — sent to your AI assistant for semantic extraction (via the `/graphify` skill, using whatever model your IDE session runs). Headless `graphify extract` requires `GEMINI_API_KEY` / `GOOGLE_API_KEY` (Gemini), `MOONSHOT_API_KEY` (Kimi), `ANTHROPIC_API_KEY` (Claude), `OPENAI_API_KEY` (OpenAI), `DEEPSEEK_API_KEY` (DeepSeek), a running Ollama instance (`OLLAMA_BASE_URL`), AWS credentials via the standard provider chain (Bedrock - no API key needed, uses IAM), or the `claude` CLI binary (Claude Code - no API key needed, uses your Claude subscription). The `--dedup-llm` flag uses the same key.
-- **Data residency** — `graphify extract` auto-detects which provider to use based on which API key is set (priority: Gemini → Kimi → Claude → OpenAI → DeepSeek → Bedrock → Ollama). For code with data-residency requirements, use `--backend ollama` (fully local) or pass an explicit `--backend` flag. Kimi (`MOONSHOT_API_KEY`) routes to Moonshot AI servers in China.
-- No telemetry, no usage tracking, no analytics.
-- **Query logging** — every `graphify query`, `graphify path`, `graphify explain`, and MCP `query_graph` call is logged to `~/.cache/graphify-queries.log` in JSON Lines format (timestamp, question, corpus, nodes returned, duration). Full subgraph responses are **not** stored by default. Set `GRAPHIFY_QUERY_LOG_DISABLE=1` to opt out, or `GRAPHIFY_QUERY_LOG=/dev/null` to silence without disabling the code path.
+- **代码文件** — 通过 tree-sitter 在本地处理。数据不会离开你的设备。
+- **视频/音频** — 使用 faster-whisper 在本地转录。数据不会离开你的设备。
+- **文档、PDF、图片** — 发送至你的 AI 助手进行语义提取（通过 `/graphify` 技能，使用你 IDE 会话运行的任意模型）。无头模式 `graphify extract` 需要设置以下任一后端：`GEMINI_API_KEY` / `GOOGLE_API_KEY` (Gemini)、`MOONSHOT_API_KEY` (Kimi)、`ANTHROPIC_API_KEY` (Claude)、`OPENAI_API_KEY` (OpenAI)、`DEEPSEEK_API_KEY` (DeepSeek)、运行中的 Ollama 实例（`OLLAMA_BASE_URL`）、标准凭证链的 AWS 凭据（Bedrock - 无需 API Key，使用 IAM），或 `claude` CLI 二进制文件（Claude Code - 无需 API Key，使用你的 Claude 订阅）。`--dedup-llm` 标志使用相同的密钥。
+- **数据驻留** — `graphify extract` 会根据已设置的 API Key 自动检测后端优先级：Gemini → Kimi → Claude → OpenAI → DeepSeek → Bedrock → Ollama。对于有数据驻留要求的代码，请使用 `--backend ollama`（完全本地）或显式传递 `--backend` 参数。Kimi (`MOONSHOT_API_KEY`) 会路由至中国境内的 Moonshot AI 服务器。
+- 无遥测、无使用追踪、无数据分析。
 
 ---
 
-## Troubleshooting
+## 故障排除
 
-**`graphify: command not found` after `pip install graphifyy`**
-pip installs scripts to a user bin directory that may not be on your PATH. Fix:
-- macOS: add `~/Library/Python/3.x/bin` to your PATH in `~/.zshrc`
-- Linux: add `~/.local/bin` to your PATH in `~/.bashrc`
-- Or use `uv tool install graphifyy` / `pipx install graphifyy` — both manage PATH automatically.
+**执行 `pip install graphifyy` 后提示 `graphify: command not found`**
+pip 会将脚本安装到用户 bin 目录，该路径可能未包含在你的 PATH 中。修复方法：
+- macOS：在 `~/.zshrc` 中将 `~/Library/Python/3.x/bin` 添加到你的 PATH
+- Linux：在 `~/.bashrc` 中将 `~/.local/bin` 添加到你的 PATH
+- 或使用 `uv tool install graphifyy` / `pipx install graphifyy` — 两者均会自动管理 PATH。
 
-**`python -m graphify` works but `graphify` command doesn't**
-Your shell's PATH doesn't include the Python scripts directory. Use `uv` or `pipx` instead of plain `pip`.
+**`python -m graphify` 可用但 `graphify` 命令不可用**
+你的 shell PATH 未包含 Python 脚本目录。建议改用 `uv` 或 `pipx`，而非原生 `pip`。
 
-**`/graphify .` causes "path not recognized" in PowerShell**
-PowerShell treats a leading `/` as a path separator. Use `graphify .` (no slash) on Windows.
+**在 PowerShell 中执行 `/graphify .` 提示 "path not recognized"**
+PowerShell 将前导斜杠视为路径分隔符。请在 Windows 上使用 `graphify .`（不带斜杠）。
 
-**Graph has fewer nodes after `--update` or rebuild**
-If a refactor deleted files, the old nodes linger. Pass `--force` (or set `GRAPHIFY_FORCE=1`) to overwrite even when the rebuild has fewer nodes.
+**执行 `--update` 或重建后图谱节点变少**
+若重构操作删除了文件，旧节点仍会残留。请传递 `--force`（或设置 `GRAPHIFY_FORCE=1`）以强制覆盖，即使新图谱节点较少。
 
-**Graph has duplicate nodes for the same entity (ghost duplicates)**
-This happens when semantic and AST extraction disagreed on the node ID format. Run a full re-extract to clean up:
+**同一实体出现重复节点（幽灵重复）**
+当语义提取与 AST 提取对节点 ID 格式不一致时会发生此情况。运行完整重新提取以清理：
 ```bash
 graphify extract . --force
 ```
 
-**Ollama runs out of VRAM / context window exceeded**
-The KV-cache window is auto-sized but may be too large for your GPU. Reduce it:
+**Ollama 显存不足 / 上下文窗口超限**
+KV-cache 窗口默认自动分配，但可能对你的 GPU 过大。请手动调小：
 ```bash
 GRAPHIFY_OLLAMA_NUM_CTX=8192 graphify extract ./docs --backend ollama --token-budget 4000
 ```
 
-**Graph HTML is too large to open in a browser (>5000 nodes)**
-Skip HTML generation and use the JSON directly:
+**图谱 HTML 文件过大导致浏览器无法打开（>5000 节点）**
+跳过 HTML 生成，直接使用 JSON：
 ```bash
 graphify cluster-only ./my-project --no-viz
 graphify query "..."
 ```
 
-**`graph.json` has conflict markers after two devs commit at once**
-Run `graphify hook install` — it sets up a git merge driver that union-merges `graph.json` automatically so conflicts never happen.
+**两位开发者同时提交后 `graph.json` 出现冲突标记**
+运行 `graphify hook install` — 它会配置 git merge driver，自动对 `graph.json` 进行并集合并，彻底避免冲突。
 
-**Extraction returns empty nodes/edges for docs or PDFs**
-Docs and PDFs require an LLM call. Check that your API key is set and the backend is correct:
+**文档或 PDF 提取返回空节点/边**
+文档和 PDF 需要调用 LLM。请检查 API Key 是否已设置且后端正确：
 ```bash
 ANTHROPIC_API_KEY=sk-... graphify extract ./docs --backend claude
 ```
 
-**Skill version mismatch warning in your IDE**
-Your installed graphify version is different from the skill file. Update:
+**IDE 中提示技能版本不匹配警告**
+你安装的 graphify 版本与技能文件不一致。请更新：
 ```bash
 uv tool upgrade graphifyy
 graphify install  # overwrites the skill file
@@ -442,7 +424,7 @@ graphify install  # overwrites the skill file
 
 ---
 
-## Full command reference
+## 完整命令参考
 
 ```
 /graphify                          # run on current directory
@@ -571,34 +553,34 @@ graphify label ./my-project                                    # (re)name commun
 graphify label ./my-project --backend=openai                   # force a specific backend
 ```
 
-> **Community names:** inside an agent (Claude Code, Gemini CLI) the agent names communities itself. When you run the bare CLI, `cluster-only` auto-names them with the configured backend (built-in or custom OpenAI-compatible provider) — pass `--no-label` to keep `Community N`, or run `graphify label` to (re)generate names on demand.
+> **社区命名说明：** 在 Agent（Claude Code、Gemini CLI）内部，Agent 会自动为社区命名。当你在裸 CLI 中运行时，`cluster-only` 会使用配置的后端自动命名内置或自定义 OpenAI 兼容提供商——传递 `--no-label` 可保留 `Community N` 占位符，或运行 `graphify label` 按需（重新）生成名称。
 
 ---
 
-## Learn more
+## 了解更多
 
-- [How it works](docs/how-it-works.md) — the extraction pipeline, community detection, confidence scoring, benchmarks
-- [ARCHITECTURE.md](ARCHITECTURE.md) — module breakdown, how to add a language
+- [How it works](docs/how-it-works.md) — 提取流水线、社区检测、置信度评分、基准测试
+- [ARCHITECTURE.md](ARCHITECTURE.md) — 模块拆解、如何添加新语言支持
 - [Optional integrations](docs/docker-mcp-sqlite.md) — Docker MCP Toolkit + SQLite
 
 ---
 
-## Built on graphify — Penpax
+## 基于 Graphify 构建 —— Penpax
 
-[**Penpax**](https://graphifylabs.ai) is the always-on layer built on top of graphify — it applies the same graph approach to your entire working life: meetings, browser history, emails, files, and code, updating continuously in the background.
+[**Penpax**](https://graphifylabs.ai) 是建立在 graphify 之上的常驻层——它将相同的图谱方法应用于你的整个工作流：会议记录、浏览器历史、邮件、文件及代码，并在后台持续更新。
 
-Built for people whose work lives across hundreds of conversations and documents they can never fully reconstruct. No cloud, fully on-device.
+专为跨数百场对话和文档工作的专业人士打造，这些数据通常无法被完整重建。无云端依赖，完全本地运行。
 
-**Free trial launching soon.** [Join the waitlist →](https://graphifylabs.ai)
+**免费试用即将上线。** [加入等待列表 →](https://graphifylabs.ai)
 
 ---
 
 <details>
-<summary>Contributing</summary>
+<summary>贡献指南</summary>
 
-### Development setup
+### 开发环境配置
 
-The project uses [uv](https://docs.astral.sh/uv/) for dev workflow. Install it once, then:
+本项目使用 [uv](https://docs.astral.sh/uv/) 管理开发工作流。安装一次后即可：
 
 ```bash
 git clone https://github.com/safishamsi/graphify.git
@@ -611,13 +593,13 @@ git checkout v8                        # active development branch
 uv sync --all-extras
 ```
 
-Verify the editable install:
+验证可编辑安装：
 ```bash
 uv run graphify --version
 uv run python -c "import graphify; print(graphify.__file__)"
 ```
 
-### Running tests
+### 运行测试
 
 ```bash
 uv run pytest tests/ -q                # run the full suite
@@ -625,21 +607,21 @@ uv run pytest tests/test_extract.py -q # one module
 uv run pytest tests/ -q -k "python"    # filter by name
 ```
 
-> macOS note: the test suite includes both `sample.f90` and `sample.F90` fixtures. These collide on case-insensitive HFS+ / APFS file systems. Run on Linux or in a Docker container if you need to test both Fortran variants simultaneously.
+> macOS 注意事项：测试套件包含 `sample.f90` 和 `sample.F90` 两个 fixture。它们在大小写不敏感的 HFS+ / APFS 文件系统上会产生冲突。若需同时测试两种 Fortran 变体，请在 Linux 或 Docker 容器中运行。
 
-### Git workflow
+### Git 工作流
 
-- Active development happens on the `v8` branch.
-- Commit style: `fix: <description>` / `feat: <description>` / `docs: <description>`
-- Before opening a PR, run `uv run pytest tests/ -q` and confirm it passes.
-- Add a fixture file to `tests/fixtures/` and tests to `tests/test_languages.py` for any new language extractor.
+- 活跃开发均在 `v8` 分支进行。
+- Commit 规范：`fix: <description>` / `feat: <description>` / `docs: <description>`
+- 提交 PR 前，请运行 `uv run pytest tests/ -q` 确认测试通过。
+- 为新语言提取器添加 fixture 文件至 `tests/fixtures/`，并在 `tests/test_languages.py` 中添加对应测试。
 
-### What to contribute
+### 贡献方向
 
-**Worked examples** are the most useful contribution. Run `/graphify` on a real corpus, save the output to `worked/{slug}/`, write an honest `review.md` covering what the graph got right and wrong, and open a PR.
+**实际案例（Worked examples）** 是最有价值的贡献。对一个真实语料库运行 `/graphify`，将输出保存至 `worked/{slug}/`，撰写一份诚实的 `review.md` 说明图谱做对和做错的地方，然后提交 PR。
 
-**Extraction bugs** — open an issue with the input file, the cache entry (`graphify-out/cache/`), and what was missed or wrong.
+**提取 Bug** — 在 Issue 中提供输入文件、缓存条目（`graphify-out/cache/`）以及遗漏或错误的结果。
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for module responsibilities and how to add a language.
+模块职责与新增语言支持方法详见 [ARCHITECTURE.md](ARCHITECTURE.md)。
 
 </details>
