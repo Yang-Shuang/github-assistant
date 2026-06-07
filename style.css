@@ -30,11 +30,11 @@ body {
     z-index: 100;
 }
 
-.header-content {
+.header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 56px;
 }
 
 .logo, .detail-title {
@@ -42,6 +42,7 @@ body {
     font-weight: 600;
     color: #0366d6;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .back-link {
@@ -54,8 +55,8 @@ body {
     font-size: 15px;
 }
 
-/* === Sort Bar Styles (now in header) === */
-.header-content .sort-btn-group {
+/* === Sort Bar Styles (in header) === */
+.header-inner .sort-btn-group {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -81,6 +82,45 @@ body {
     background-color: #0366d6;
     color: #fff;
     border-color: #0366d6;
+}
+
+/* === Search Bar Styles (inline in header) === */
+.search-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#search-input {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    flex: 1;
+}
+
+#search-input:focus {
+    border-color: #0366d6;
+}
+
+#search-btn {
+    height: 34px;
+    padding: 0 16px;
+    border: 1px solid #0366d6;
+    background-color: #0366d6;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#search-btn:hover {
+    background-color: #0256b9;
+    border-color: #0256b9;
 }
 
 /* === Pagination Styles === */
@@ -152,25 +192,45 @@ body {
     background-color: #f9fafb;
 }
 
+/* === Index Badge Styles === */
+.index-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 16px;
+    padding: 0 4px;
+    background: #2d3748;
+    color: #e2e8f0;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 16px;
+    flex-shrink: 0;
+}
+
 .repo-info {
     flex: 1;
     min-width: 0;
 }
 
-a.repo-name-link {
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    color: #0366d6;
+#badge-name-row a {
+    display: inline;
     text-decoration: none;
-    margin-bottom: 4px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    color: #111827;
+    font-weight: 600;
+    font-size: 16px;
 }
 
-a.repo-name-link:hover {
-    text-decoration: underline;
+#badge-name-row a:hover {
+    text-decoration: none;
+}
+
+#badge-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
 }
 
 .repo-desc {
@@ -189,6 +249,8 @@ a.repo-name-link:hover {
     gap: 4px;
     margin-top: 6px;
 }
+
+
 
 .topic-tag {
     display: inline-block;
@@ -412,41 +474,50 @@ a.repo-name-link:hover {
         padding: 0 12px;
     }
     
-    .header-content {
-        height: 56px;
+   /* Mobile header - logo + sort in row, search wraps */
+    .header-inner {
+        flex-wrap: wrap !important;
+        height: auto !important;
+        align-items: center !important;
     }
     
     .logo, .detail-title {
         font-size: 16px;
     }
     
+    /* Sort buttons stay inline with logo */
     .sort-btn-group {
-        flex-wrap: wrap;
+        margin-top: 10px;
     }
     
+    /* Search bar on its own row, full width */
+    .search-bar-wrapper {
+        flex: 1 1 100% !important;
+        padding-top: 8px;
+        justify-content: center !important;
+        margin-bottom: 8px;
+    }
+    
+    /* Mobile repo item - vertical stacking */
     .repo-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        display: block !important;
+    }
+    
+    .repo-info {
+        margin-bottom: 8px;
     }
     
     .repo-meta {
-        margin-left: 0;
-        padding-left: 0;
-        width: 100%;
-        justify-content: space-between;
+        justify-content: flex-end !important;
+        padding-top: 4px;
+        border-top: 1px solid #f3f4f6;
     }
     
-    .info-card {
-        padding: 16px;
-    }
-    
-    .readme-tabs {
-        flex-wrap: wrap;
-    }
-    
-    .readme-content {
-        padding: 16px;
+    #search-btn {
+        height: 32px;
+        padding: 0 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 }
 
